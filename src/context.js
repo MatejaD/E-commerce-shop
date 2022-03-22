@@ -5,10 +5,9 @@ import reducer from "./reducer";
 
 const initalState = {
     cart:cartItems,
-    amount:1,
+    cartDisplay:cartItems,
+    amount:0,
     total:0,
-    cartDisplay:[],
-    cartDisplay2:[],
 }
 
 const AppContext = React.createContext()
@@ -25,6 +24,7 @@ const AppContext = React.createContext()
          dispatch({type: 'REMOVE', payload:id})
      }
    
+    
 
      const clear = () =>{
          dispatch({type:'CLEAR_CART'})

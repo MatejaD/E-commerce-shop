@@ -1,3 +1,4 @@
+import { clear } from '@testing-library/user-event/dist/clear'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {useGlobalContext} from '../context'
@@ -6,7 +7,7 @@ import {useGlobalContext} from '../context'
 
 export default function Cart() {
 
-    const {total,cart,cartDisplay,removeItem,cartDisplay2} = useGlobalContext()
+    const {total,cart,cartDisplay,display,removeItem,addToCart} = useGlobalContext()
 
     
     
@@ -31,22 +32,29 @@ export default function Cart() {
                    </ul>
                </div>
                <div className="items">
-                   {cart.map((item)=>{
-                       if(item.amount > 0){
-                           cartDisplay.push(item)
-                       }
-                   })}
+                      <Link to='/'>back</Link>
+
             {cartDisplay.map((item,index)=>{
-                console.log(item)
-                return <div className="cart-item" key={index}>
-                    <div className='together'>
-                    <img src={item.image} alt="" />
-                    <h5>{item.name}</h5>
+                {if (item.amount > 0){
+                    return <div className="cart-item" key={item.id}>
+                        <div className='together'>
+                            <img src={item.image} alt="" />
+                            <h5>{item.name}</h5>
+                        </div>
+                        <h3>{item.pricec}</h3>
+                        <h3>{item.amount}</h3>
+                        <button className='remove-item' onClick={() =>{ 
+                            display()
+                            addToCart(item.id)}}>Up</button>
+                        <button className='remove-item' onClick={() => {
+                            display()
+                            removeItem(item.id)
+                        }}>Down</button>
                     </div>
-                    <h3>{item.pricec}</h3>
-                    <h3>{item.amount}</h3>
-                    <button className='remove-item' onClick={() => removeItem(item.id)}>X</button>
-                </div>
+                }
+                
+            }
+               
             })}
                   </div>
           </div> 

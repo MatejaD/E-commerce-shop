@@ -304,3 +304,19 @@ button:hover{
   display: flex;
   gap: 10px;
 }
+
+.information{
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.information ul{
+  width: 100%;
+    display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
