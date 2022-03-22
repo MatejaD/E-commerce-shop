@@ -1,12 +1,14 @@
-import React, {useState,useReducer,useContext} from "react";
+import React, {useState,useReducer,useContext, useEffect} from "react";
 import cartItems from './data'
 import reducer from "./reducer";
 
 
 const initalState = {
     cart:cartItems,
-    amount:0,
+    amount:1,
     total:0,
+    cartDisplay:[],
+    cartDisplay2:[],
 }
 
 const AppContext = React.createContext()
@@ -16,13 +18,25 @@ const AppContext = React.createContext()
      const [newCategories, setNewCategories] = useState([])
 
      const addToCart = (id) =>{
-         dispatch({type:'ADD', payload:id})
+         dispatch({ type: 'ADD', payload:id })
      }
+
+     const removeItem = (id) =>{
+         dispatch({type: 'REMOVE', payload:id})
+     }
+   
 
      const clear = () =>{
          dispatch({type:'CLEAR_CART'})
      }
      
+const display = () => {
+    dispatch({ type: 'DISPLAY' })
+}         
+
+useEffect(()=>{
+    display()
+},[])
 
     return <AppContext.Provider 
     value={{
@@ -31,6 +45,8 @@ const AppContext = React.createContext()
         setNewCategories,
         addToCart,
         clear,
+        display,
+        removeItem,
 
     }}
     >

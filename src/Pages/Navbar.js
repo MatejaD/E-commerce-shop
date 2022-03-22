@@ -1,24 +1,17 @@
 import React from 'react'
-import { useGlobalContext } from './context'
+import { useGlobalContext } from '../context'
+import { RiShoppingCartLine } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
+
 
 export default function Navbar() {
 
 const {amount} = useGlobalContext()
 
     const links = [
-        {name:'Home',
-        id:1
-        },
-
-        {
-            name: 'About',
-            id: 2
-        },
-
-        {
-            name: 'Contact us',
-            id: 3
-        },
+        {name:'Home',id:1},
+        {name: 'About',id: 2},
+        {name: 'Contact us',id: 3},
 
     ]
   return (
@@ -32,9 +25,8 @@ const {amount} = useGlobalContext()
             })}
           </ul>
           <div className="cart">
-
-              <h2>cart</h2>
-              <p>{amount}</p>
+        <Link className='cart-icon' to='./Cart'><RiShoppingCartLine /></Link>
+              <div className="amount">{amount}</div>
           </div>
       </nav>
   )

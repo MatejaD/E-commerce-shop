@@ -1,8 +1,7 @@
 import React, { useEffect,useState } from "react";
 import { Link } from "react-router-dom";
-import cartItems from './data'
-import {useGlobalContext} from './context'
-
+import cartItems from '../data'
+import {useGlobalContext} from '../context'
 // TASKS
 // 1. Implement Pagination
 // 2. Make it Prettier
@@ -13,7 +12,7 @@ import {useGlobalContext} from './context'
 function App() {
   let categories = []
 
-  const {cart,newCategories,setNewCategories,addToCart,clear} = useGlobalContext()
+  const {cart,newCategories,setNewCategories,addToCart,display} = useGlobalContext()
   
 useEffect(()=>{
 
@@ -27,7 +26,6 @@ useEffect(()=>{
 
   categories = [... new Set(newCategories)]
 
-  console.log(categories)
   return (
     <main>
       <div className="cover">
@@ -49,19 +47,21 @@ useEffect(()=>{
           const {name,id,image,price,amount} = item
           return <div key={id} className="item-container">
             <div className="image-container">
-            <img src={image} alt={name} />
-            <button onClick={clear}>remove</button>
+            <img src={image} alt='wha' />
             <div className="overlay">
               <p className="text">Lorem ipsum, nulla perspiciatis  sed fuga, ut laboriosam ab laudantium enim rerum fugit eveniet molestias, explicabo harum quasi autem vero qui?</p>
             </div>
             </div>
             <div className="info">
               <h4>{name}</h4>
-              <span>${price}</span>
-              <p>{amount}</p>
+              <span>{price}$</span>
             </div>
-            <button className="buy" onClick={() => addToCart(id)}>Add To Cart</button>
-
+            <div className="btn-container">
+            <button className="buy" onClick={() => {
+              addToCart(id)
+              display()
+            }}>Add To Cart</button>
+            </div>
           </div>
         })}
    
