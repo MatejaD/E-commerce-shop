@@ -15,6 +15,8 @@ const AppContext = React.createContext()
  const  AppProvider = ({children}) => {
      const [state,dispatch] = useReducer(reducer,initalState)
      const [newCategories, setNewCategories] = useState([])
+     const [inputValue,setInputValue] = useState('')
+     const [open,setOpen] = useState(false)
 
      const addToCart = (id) =>{
          dispatch({ type: 'ADD', payload:id })
@@ -23,20 +25,37 @@ const AppContext = React.createContext()
      const removeItem = (id) =>{
          dispatch({type: 'REMOVE', payload:id})
      }
-   
-    
 
      const clear = () =>{
-         dispatch({type:'CLEAR_CART'})
-     }
-     
+        dispatch({type:'CLEAR_CART'})
+}
+
 const display = () => {
     dispatch({ type: 'DISPLAY' })
 }         
 
+const search = (name) =>{
+    dispatch({type: 'SEARCH', payload:name})
+}
+
+const categorySearch = (category) =>{
+    dispatch({type:'CATEGORY', payload:category})
+}
+
+const sortByLowestPrice = () =>{
+    dispatch({type:'LOWEST_PRICE'})
+}
+
 useEffect(()=>{
     display()
 },[])
+
+useEffect(()=>{
+    let timeout = setTimeout(() => {
+        search(inputValue)
+    }, 300);
+    return () => clearTimeout(timeout)
+},[inputValue])
 
     return <AppContext.Provider 
     value={{
@@ -47,6 +66,12 @@ useEffect(()=>{
         clear,
         display,
         removeItem,
+        inputValue,
+        setInputValue,
+        categorySearch,
+        open,
+        setOpen,
+        sortByLowestPrice
 
     }}
     >
