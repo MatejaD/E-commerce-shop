@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #99E1D9;
   overflow-x: hidden;
+  max-height: 80vh;
 
   /* primary color: #99E1D9 */
 
@@ -26,7 +27,7 @@ li{
 main{
   position: relative;
 width: 100vw;
-min-height: 100vh;
+min-height: 80vh;
 background-color: #99E1D9;
 display: flex;
 flex-flow: row;
@@ -137,7 +138,8 @@ nav{
   top: 0;
   left: 0;
   right: 0;
-  background-color: #fefefe;
+  background-color: black;
+  opacity: 0.8;
   transition: 0.5s ease-in-out;
   overflow: hidden;
 
@@ -152,6 +154,7 @@ nav{
 
 .text{
   padding: 0 10px;
+  color: wheat;
 }
 
 img{
@@ -421,6 +424,76 @@ button:hover{
   gap: 10px;
 }
 
+
+ .shop-now{
+    display: block;
+    height: 50vh;
+    width: 35vw;
+    /* border: 2px solid black; */
+    background-color: rgba(127, 255, 212,0.2); 
+    display: flex;
+    flex-flow: column;
+    justify-content:center;
+    align-items: left;
+  }
+
+  .shop-now p {
+    font-size: 1.8rem;
+    /* padding: 0 20px; */
+  }
+
+  .shop-now h2{
+    font-size: 2.3rem;
+    text-transform: capitalize;
+  }
+
+  .shop-now button {
+    width: 200px;
+    height: 250px;
+    padding: 15px 0;
+    /* margin-top: 15px; */
+    
+  }
+
+  .picture{
+    height: 70vh;
+    width: 40vw;
+    background-color: rgba(244, 185, 66, 0.9);
+    position: relative;
+    box-shadow: 5px 5px 0px black;
+    border-radius: 3px;
+  }
+
+  .picture img{
+    height: 200px;
+    width: 300px;
+  }
+
+  .first-pic{
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    z-index: 2;
+    border-radius: 15px;
+  }
+
+  .second-pic{
+    position: absolute;
+    bottom: 20%;
+    left: 3%;
+    border-radius: 15px;
+    z-index: 1;
+  }
+
+  .third-pic{
+    position: absolute;
+    bottom: 3%;
+    right: 5%;
+    border-radius: 15px;
+
+  }
+
+
 .information{
   margin: 0 auto;
   width: 75vw;
@@ -430,6 +503,8 @@ button:hover{
   /* justify-content: space-around; */
   /* align-items: center; */
 }
+
+
 
 .information ul{
   /* background-color: #fefefe; */
@@ -488,7 +563,8 @@ button:hover{
 
   .pop-up{
     display: flex;
-    justify-content: left;
+    justify-content: space-around;
+    flex-flow: column;
     align-items: center;
     position: absolute;
     width: 100vw;
@@ -502,8 +578,78 @@ button:hover{
     left: 0;
     right: 0;
     /* transition-property: height; */
-    transition-duration: 0.5s;
     transform: translate(-100%);
+  }
+
+  .information{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    font-size: 1rem;
+    height: 5rem;
+    width: 100%;
+  }
+
+  .information ul{
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    align-items: center;
+  }
+
+  .price{
+    font-weight: normal;
+    margin-left: 1rem;
+    margin-right: 5px;
+  }
+
+  .cart-item{
+    height: 6rem;
+    padding: 0 5px;
+  }
+
+  .empty-info{
+    width: 30rem;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .empty-btn{
+    width: 14rem;
+    height: 3rem;
+  }
+
+ .shop-now {
+   width: 90%;
+   height: 45vh;
+   
+ }
+
+ .shop-now h2{
+   font-size: 1.5rem;
+ }
+
+ .shop-now p{
+   font-size: 1.3rem;
+ }
+
+ .picture{
+   width: 90%;
+   margin-bottom: 2rem;
+ }
+
+ .picture img{
+   width: 50%;
+   height: 40%;
+ }
+
+  .cart-container{
+    width: 95%;
+  }
+
+  .information ul li{
+    font-size: 1.2rem;
   }
 
 
@@ -512,12 +658,12 @@ button:hover{
     flex-flow: column;
     justify-content: center;
     gap: 40px;
+    height: 15rem;
     align-items: center;
     overflow: hidden;
   }
 
-  
-
+ 
   .display{
     display: flex;
     justify-content: left;
